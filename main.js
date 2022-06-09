@@ -1,3 +1,21 @@
+//Clase evaludo
+
+class evaluado{
+    constructor (nombre, edad,) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+    resultado () {
+        return alert (this.nombre + "su resultado es:")
+    }
+}
+console.log (evaluado)
+
+const arrayEvaluado = []
+
+arrayEvaluado.push (new evaluado (prompt("nombre")), parseInt(prompt("edad")))
+
+
 //Simulador de trivia
 function trivia() {
 let preguntaA;
@@ -12,6 +30,7 @@ let porcentajeC;
 let porcentajeI;
 
 do {
+    arrayEvaluado
     preguntaA = prompt ("1. ¿Cuál es el río más largo del mundo?"+"\n"+ "amazonas o nilo")
     preguntaB = prompt ("2. ¿Cuál es el país con más habitantes del mundo?"+"\n"+ "china o rusia")
     preguntaC = Number (prompt ("3. ¿En qué año cayó el muro de Berlín?"+"\n"+ "1990 o 1989"))
