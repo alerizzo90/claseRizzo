@@ -88,14 +88,17 @@
 // }
 
 let comenzar = document.getElementById ("btmComenzar")
-let usuario1 = document.getElementById ("nombre", "apellido", "email")
+let usuario = document.getElementById ("nombre")
+
 comenzar.onclick = () => {
     console.log ("comenzar trivia")
 }
-usuario1.onchange = () => {
-    console.log ("usuario1")
+comenzar.onchange = () => {
+    console.log ("iniciar")
 }
-
+usuario.onkeydown = () => {
+    console.log ("ingreso de usuario")
+}
 
 
 
