@@ -1,104 +1,83 @@
-// //Clase evaludo
 
-// class evaluado{
-//     constructor (nombre, edad,) {
-//         this.nombre = nombre;
-//         this.edad = edad;
-//     }
-//     resultado () {
-//         return alert (this.nombre + "su resultado es:")
-//     }
-// }
+let correcta = 0;
+let incorrecta = 0;
+let finalizar;
+let porcentajeC;
+let porcentajeI;
 
-// const arrayEvaluado = []
+class Preguntas {
+    constructor (id, pregunta, respuesta,) {
+        this.id = id
+        this.pregunta = pregunta
+        this.respuesta = respuesta
+    }
+}
 
-// arrayEvaluado.push (new evaluado (prompt("nombre")), parseInt(prompt("edad")))
+arrayPreguntas = [];
+arrayPreguntas.push (new Preguntas ("a", "¿Cuál es el río más largo del mundo?"+"\n"+ "amazonas o nilo", "amazonas"))
+arrayPreguntas.push (new Preguntas ("b", "¿Cuál es el país con más habitantes del mundo?"+"\n"+ "china o rusia", "china"))
+arrayPreguntas.push (new Preguntas ("c", "¿En qué año cayó el muro de Berlín?"+"\n"+ "1990 o 1989", "1989"))
+arrayPreguntas.push (new Preguntas ("d", "¿Cuál es el planeta más grande del Sistema Solar?"+"\n"+"saturno o jupiter", "jupiter"))
+arrayPreguntas.push (new Preguntas ("e", "¿Cuántos huesos tiene el cuerpo humano?"+"\n"+"206 o 229", "206"))
 
 
-// //Simulador de trivia
-// function trivia() {
-// let preguntaA;
-// let preguntaB;
-// let preguntaC;
-// let preguntaD;
-// let preguntaE;
-// let correcta = 0;
-// let incorrecta = 0;
-// let finalizar;
-// let porcentajeC;
-// let porcentajeI;
-
-// do {
-//     arrayEvaluado
-//     preguntaA = prompt ("1. ¿Cuál es el río más largo del mundo?"+"\n"+ "amazonas o nilo")
-//     preguntaB = prompt ("2. ¿Cuál es el país con más habitantes del mundo?"+"\n"+ "china o rusia")
-//     preguntaC = Number (prompt ("3. ¿En qué año cayó el muro de Berlín?"+"\n"+ "1990 o 1989"))
-//     preguntaD = prompt ("4.¿Cuál es el planeta más grande del Sistema Solar?"+"\n"+"saturno o jupiter")
-//     preguntaE = Number (prompt ("5.¿Cuántos huesos tiene el cuerpo humano?"+"\n"+"206 o 229"))
+const trivia = () => {
+    const interrogante = arrayPreguntas.map ( (el) => el.pregunta)
+    const replica = arrayPreguntas.map ( (el) => el.respuesta)
     
-//     if (preguntaA=="amazonas") {
-//         correcta ++
-//     }
-//     else {
-//         incorrecta ++
-//     }
+    interrogante;
+    do {
+        
+        if (replica) {
+            correcta ++
+        }
+        else {
+            incorrecta ++
+        }
+        finalizar = confirm ("¿Quiere finalizar la trivia?")
+    }
+    while (finalizar) {
+            porcentajeC = correcta*100/5;
+            porcentajeI = incorrecta*100/5;
 
-//     if (preguntaB=="china") {
-//         correcta++
-//     }
-//     else {
-//         incorrecta ++
-//     }
-//     if (preguntaC == 1989) {
-//         correcta++
-//     }
-//     else {
-//         incorrecta ++
-//     }
-//     if (preguntaD == "jupiter") {
-//         correcta++
-//     }
-//     else {
-//         incorrecta ++
-//     }
-//     if (preguntaE == 206) {
-//         correcta++
-//     }
-//     else {
-//         incorrecta ++
-//     }
+            console.log ("Respuestas correctas:"+"\n"+ porcentajeC+"%")
+            console.log ("Respuestas incorrectas:"+"\n"+porcentajeI+"%")
+            if (porcentajeC>=60) {
+            console.log ("Todos pueden alcanzar el éxito pero pocos se atreven, tú lo hiciste y hoy eres uno de los mejores,"+"\n"+"¡FELICITACIONES!")
+            }
+             else (
+            console.log ("El éxito de la vida no está en vencer siempre, sino en no rendirse nunca.") )   
+    }
 
-//     finalizar = confirm ("¿Quiere reiniciar la trivia?")
+    }
 
-// }
-// while (finalizar) {
-//     porcentajeC = correcta*100/5;
-//     porcentajeI = incorrecta*100/5;
 
-//     alert ("Respuestas correctas:"+"\n"+ porcentajeC+"%")
-//     alert ("Respuestas incorrectas:"+"\n"+porcentajeI+"%")
-//     if (porcentajeC>=60) {
-//         alert ("Todos pueden alcanzar el éxito pero pocos se atreven, tú lo hiciste y hoy eres uno de los mejores,"+"\n"+"¡FELICITACIONES!")
-//     }
-//     else (
-//         alert ("El éxito de la vida no está en vencer siempre, sino en no rendirse nunca.")
-//     )   
-// }
 
-// }
-
-let comenzar = document.getElementById ("btmComenzar")
-let usuario = document.getElementById ("nombre")
-
-comenzar.onclick = () => {
-    console.log ("comenzar trivia")
+for (const interrogacion of arrayPreguntas) {
+    let contenedor = document.createElement ("div")
+    contenedor.innerHTML = `<label for="pregunta">
+                                <p>${interrogacion.id}</p>
+                                <p>${interrogacion.pregunta}</p>
+                            </label> 
+                            <input type="text" name=${interrogacion.respuesta} id="respuestas">
+                            `
+    document.body.appendChild (contenedor)
 }
-comenzar.onchange = () => {
-    console.log ("iniciar")
-}
-usuario.onkeydown = () => {
-    console.log ("ingreso de usuario")
-}
+let confirmar = document.createElement ("div")
+confirmar.innerHTML = `<button id= "finalizar">finalizar</button>`
+document.body.appendChild (confirmar)
+
+const enJson = JSON.stringify (arrayPreguntas);
+console.log (enJson)
+
+
+
+let verResultado = document.getElementById ("finalizar")
+
+
+verResultado.onclick = () => {
+    trivia()
+    console.log ("ver resultado")}
 
 
 
