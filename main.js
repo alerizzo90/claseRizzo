@@ -33,13 +33,27 @@ for (const interrogacion of arrayPreguntas) {
 
     }
 
-let verdadero = document.getElementById ("ok")
-verdadero.addEventListener ("click", resultadoOk )
-function resultadoOk () { console.log (correcta.length)
+const verdadero = document.querySelectorAll ("#ok");
+const resultadoOK = function () {
+     console.log("correcta");
 }
-const correcta = []
-correcta.push (resultadoOk)
-const enJSON = JSON.stringify (correcta)
+
+verdadero.forEach(el => {
+	el.addEventListener("click", resultadoOK);
+});
+
+const falso = document.querySelectorAll ("#nok");
+const resultadoNOK = function () {
+     console.log("incorrecta");
+}
+
+falso.forEach(el => {
+	el.addEventListener("click", resultadoNOK);
+});
+
+
+const enJSON = JSON.stringify (resultadoOK)
+
 
 localStorage.setItem ('respuestasPositivas', enJSON)
 
