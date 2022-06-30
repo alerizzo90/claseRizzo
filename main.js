@@ -36,6 +36,18 @@ for (const interrogacion of arrayPreguntas) {
 const verdadero = document.querySelectorAll ("#ok");
 const resultadoOK = function () {
      console.log("correcta");
+     Toastify({
+        text: "Verdadero",
+        duration: 3000,
+        gravity: "top",
+        position: "center",
+        
+         style: {
+            background: "linear-gradient(to right, #213D19 ,  #8FDF76 )",
+             fontSize: "1.5rem",
+             color: "white",
+        }
+     }).showToast();
 }
 
 verdadero.forEach(el => {
@@ -45,10 +57,24 @@ verdadero.forEach(el => {
 const falso = document.querySelectorAll ("#nok");
 const resultadoNOK = function () {
      console.log("incorrecta");
+     Toastify({
+        text: "Incorrecta",
+        duration: 3000,
+        gravity: "top",
+        position: "center",
+        
+         style: {
+             background: "linear-gradient(to right, #FF4C33 , #E77070 )",
+             fontSize: "1.5rem",
+             color: "white",
+
+        }
+     }).showToast();
 }
 
 falso.forEach(el => {
 	el.addEventListener("click", resultadoNOK);
+    
 });
 
 
