@@ -87,7 +87,7 @@ localStorage.setItem ('respuestasPositivas', enJSON)
 
 let verResultado = localStorage.getItem ('respuestasPositivas')
 
-const contenedor = document.getElementById("lugar");
+const contenedor = document.getElementById ("lugar");
 
 window.addEventListener ('load', () => {
     let lon
