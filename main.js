@@ -107,6 +107,9 @@ window.addEventListener ('load', () => {
                let ciudad = data.name
                ubicacion.textContent = `Tu lugar: ${ciudad}`
             })
+            .catch ( error => {
+                console.log (error)
+            })
 
         })
 
