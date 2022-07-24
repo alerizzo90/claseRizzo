@@ -1,0 +1,58 @@
+.estiloGeneral {
+    background-color: beige;
+    font-family: 'Edu QLD Beginner', cursive;
+}
+
+.titulo {
+    color: blue;
+}
+section {
+    display: flex;
+    flex-direction: column;
+}
+section div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blue;
+    color: white;
+    margin-top: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+section div:last-child {
+    margin-bottom: 40px;
+}
+p {
+    font-size: 1.5rem;
+    margin: 10px;
+}
+.btnResp {
+    font-size: 1rem;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bolder;
+
+}
+.btnResp:hover {
+    background-color: gray;
+}
+#fin {
+    font-size: 1rem;
+    margin: 10px;
+    font-size: 2rem;
+    font-weight: bolder;
+    width: 200px;
+    height: 120px;
+}
+#fin:hover {
+    background-color: red;
+
+}
+#btnFin {
+    background-color: beige;
+}
+#resultado {
+    font-size: 3rem;
+}

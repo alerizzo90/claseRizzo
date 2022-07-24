@@ -1,43 +1,62 @@
 
-let incorrecta = 0;
+let correcta = 0;
 let finalizar;
-let porcentajeC;
-let porcentajeI;
-
-  class Preguntas {
+//preguntas
+class Preguntas {
       constructor (id, pregunta, respuesta,incorrecta) {
-                  this.id = id
-          this.pregunta = pregunta
-          this.respuesta = respuesta
-          this.incorrecta = incorrecta
+        this.id = id
+        this.pregunta = pregunta
+        this.respuesta = respuesta
+        this.incorrecta = incorrecta
       }
   }
 
  arrayPreguntas = [];
-  arrayPreguntas.push (new Preguntas ("a", "¿Cuál es el río más largo del mundo?"+"\n"+ "amazonas o nilo", "amazonas", "nilo"))
-  arrayPreguntas.push (new Preguntas ("b", "¿Cuál es el país con más habitantes del mundo?"+"\n"+ "china o rusia", "china", "rusia"))
-  arrayPreguntas.push (new Preguntas ("c", "¿En qué año cayó el muro de Berlín?"+"\n"+ "1990 o 1989", "1989", "1990"))
-  arrayPreguntas.push (new Preguntas ("d", "¿Cuál es el planeta más grande del Sistema Solar?"+"\n"+"saturno o jupiter", "jupiter", "saturno"))
-  arrayPreguntas.push (new Preguntas ("e", "¿Cuántos huesos tiene el cuerpo humano?"+"\n"+"206 o 229", "206", "229"))
+  arrayPreguntas.push (new Preguntas ("a", "¿Cuál es el río más largo del mundo?","Amazonas", "Nilo"))
+  arrayPreguntas.push (new Preguntas ("b", "¿Cuál es el país con más habitantes del mundo?","China", "Rusia"))
+  arrayPreguntas.push (new Preguntas ("c", "¿En qué año cayó el muro de Berlín?","1989", "1990"))
+  arrayPreguntas.push (new Preguntas ("d", "¿Cuál es el planeta más grande del Sistema Solar?","Jupiter", "Saturno"))
+  arrayPreguntas.push (new Preguntas ("e", "¿Cuántos huesos tiene el cuerpo humano?","206", "229"))
 
+const preg = document.querySelector ("#preg")
 
  for (const interrogacion of arrayPreguntas) {
-     let contenedor = document.createElement ('div')
-     contenedor.className = 'pregunta'
-     contenedor.innerHTML = `<p>${interrogacion.id}</p>
+    const contenedor = document.createElement ("div");
+    
+    contenedor.innerHTML = `<p>${interrogacion.id}</p>
                              <p>${interrogacion.pregunta}</p>
-                             <input type="button" value="${interrogacion.respuesta}" id= "ok">
-                             <input type="button" value="${interrogacion.incorrecta}" id= "nok">
+                             <input type="button" value="${interrogacion.respuesta}" id= "ok" class= "btnResp">
+                             <input type="button" value="${interrogacion.incorrecta}" id= "nok" class= "btnResp">
                             `
-     document.body.appendChild (contenedor)
-
+    preg.appendChild (contenedor);
      }
 
+//resultados al finalizar
+const fin = document.querySelector ("#fin")
+const bien = document.getElementById ("bien")
+const resultado = document.getElementById ("resultado")
+const respOk  = []
+fin.addEventListener("click", () => {
+  
+    if (correcta>=3) {
+        bien.textContent = correcta
+        resultado.textContent = "GANASTE!!"
+    }
+    else {
+        bien.textContent = correcta
+        resultado.textContent = "PERDISTE!!"
+    }
+    return
+}
+
+) 
 
 
 const verdadero = document.querySelectorAll ("#ok");
 const resultadoOK = function () {
-     console.log("correcta");
+    correcta++
+    respOk.push (correcta);
+    localStorage.setItem ("correctas",JSON.stringify (correcta));
      Toastify({
         text: "Verdadero",
         duration: 3000,
@@ -50,6 +69,7 @@ const resultadoOK = function () {
              color: "white",
         }
      }).showToast();
+     return
 }
 
 verdadero.forEach(el => {
@@ -58,7 +78,6 @@ verdadero.forEach(el => {
 
 const falso = document.querySelectorAll ("#nok");
 const resultadoNOK = function () {
-     console.log("incorrecta");
      Toastify({
         text: "Incorrecta",
         duration: 3000,
@@ -79,15 +98,7 @@ falso.forEach(el => {
     
 });
 
-
-const enJSON = JSON.stringify (resultadoOK)
-
-
-localStorage.setItem ('respuestasPositivas', enJSON)
-
-let verResultado = localStorage.getItem ('respuestasPositivas')
-
-const contenedor = document.getElementById ("lugar");
+//ubicacion
 
 window.addEventListener ('load', () => {
     let lon
@@ -105,7 +116,7 @@ window.addEventListener ('load', () => {
             .then (data => {
                console.log (data.name)
                let ciudad = data.name
-               ubicacion.textContent = `Tu lugar: ${ciudad}`
+               ubicacion.textContent = `Ciudad: ${ciudad}`
             })
             .catch ( error => {
                 console.log (error)
