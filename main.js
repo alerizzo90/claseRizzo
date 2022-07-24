@@ -37,18 +37,19 @@ const bien = document.getElementById ("bien")
 const resultado = document.getElementById ("resultado")
 const respOk  = []
 fin.addEventListener("click", () => {
+    setTimeout(() => {
+        if (correcta>=3) {
+            bien.textContent = correcta
+            resultado.textContent = "GANASTE!!"
+        }
+        else {
+            bien.textContent = correcta
+            resultado.textContent = "PERDISTE!!"
+        }
+    
+    }, 1000);
   
-    if (correcta>=3) {
-        bien.textContent = correcta
-        resultado.textContent = "GANASTE!!"
-    }
-    else {
-        bien.textContent = correcta
-        resultado.textContent = "PERDISTE!!"
-    }
-    return
 }
-
 ) 
 
 
@@ -75,6 +76,8 @@ const resultadoOK = function () {
 verdadero.forEach(el => {
 	el.addEventListener("click", resultadoOK);
 });
+
+
 
 const falso = document.querySelectorAll ("#nok");
 const resultadoNOK = function () {
